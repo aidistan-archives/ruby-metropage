@@ -1,0 +1,5 @@
+*.gem
+
+# YARD artifacts
+.yardoc
+doc/

@@ -1,0 +1,29 @@
+# encoding: UTF-8
+$:.push File.expand_path("../lib", __FILE__)
+
+# clean
+desc "Clean the directory"
+task :clean do
+  FileList[".yardoc", "doc", "*.gem"].each do |d|
+    FileUtils.rm_r(d) rescue nil
+  end
+end
+
+# gem
+desc "Build the gem"
+task :gem do
+  system("gem build #{File.dirname(__FILE__)}" + "/aidi-metropage.gemspec")
+end
+
+# install
+desc "Install the gem"
+task :install => :gem do
+  require 'metropage'
+  system("gem install aidi-metropage-#{MetroPage::VERSION}.gem --no-rdoc --no-ri")
+end
+
+# uninstall
+desc "Uninstall the gem"
+task :uninstall do
+  system("gem uninstall aidi-metropage")
+end
