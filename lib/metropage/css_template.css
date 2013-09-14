@@ -1,0 +1,209 @@
+/*-----------------------------------------------------------------------------
+| Basic CSS
+-----------------------------------------------------------------------------*/
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+ul, ol, dl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+a img {
+    border: none;
+}
+a:link {
+    color:#414958;
+    text-decoration: underline;
+}
+a:visited {
+    color: #4E5869;
+    text-decoration: underline;
+}
+a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+.container {
+    width: 80%;
+    max-width: 1260px;
+    min-width: 780px;
+    background-color: #FFF;
+    margin: 0 auto;
+}
+.header {
+    background-color: #FFFFFF;
+}
+.content {
+    padding: 10px 0;
+}
+.content ul, .content ol {
+    padding: 0 15px 15px 40px;
+}
+.footer {
+    padding: 10px 0;
+    background-color: #FFFFFF;
+}
+.fltrt {
+    float: right;
+    margin-left: 8px;
+}
+.fltlft {
+    float: left;
+    margin-right: 8px;
+}
+.clearfloat {
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+
+
+/*-----------------------------------------------------------------------------
+| Windows 8 style
+-----------------------------------------------------------------------------*/
+.metroitem {
+    /*position: relative;*/
+    height: 168px;
+    width: 168px;
+    line-height: 0px;
+    color: transparent;
+    transition: width 0.3s ease 0.1s, line-height 0s ease 0.1s, color 0.1s ease;
+    -webkit-transition: width 0.3s ease 0.1s, line-height 0s ease 0.1s, color 0.1s ease;
+    -moz-transition: width 0.3s ease 0.1s, line-height 0s ease 0.1s, color 0.1s ease;
+    -o-transition: width 0.3s ease 0.1s, line-height 0s ease 0.1s, color 0.1s ease;
+}
+.metroitem:hover {
+    width: 450px;
+    line-height: 20px;
+    color: #575858;
+    transition: width 0.3s ease, line-height 0s ease 0.2s, color 0.1s ease 0.3s;
+    -webkit-transition: width 0.3s ease, line-height 0s ease 0.2s, color 0.1s ease 0.3s;
+    -moz-transition: width 0.3s ease, line-height 0s ease 0.2s, color 0.1s ease 0.3s;
+    -o-transition: width 0.3s ease, line-height 0s ease 0.2s, color 0.1s ease 0.3s;
+}
+
+.metroitem h4 { text-align: center; }
+.metroitem p  { text-align: left; }
+.metroitem .cn{ font-family: Microsoft YaHei; }
+.metroitem .en{ font-family: Verdana; }
+.metroitem p.cn { text-indent: 2em; }
+.metroitem p.en { text-indent: 0em; }
+
+.metroitem img.icon {
+    width: 168px;
+    height: 168px;
+    float: left;
+    margin: 0px 15px; 
+}
+.metroitem table.icon {
+    width: 168px;
+    height: 168px;
+    float: left;
+    margin: 0px 15px; 
+}
+.metroitem table.icon td{
+    color: #FFFFFF;
+    vertical-align: middle;
+}
+
+.metroitem img.rubybadge{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    transition: width 0.1s ease, height 0.1s ease;
+}
+.metroitem:hover img.rubybadge{
+    width: 104px;
+    height: 18px;
+    transition: width 0.1s ease 0.3s, height 0.1s ease 0.3s;
+}
+
+
+
+/*-----------------------------------------------------------------------------
+| Nav bar
+-----------------------------------------------------------------------------*/
+#nav,#nav ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+#nav {
+    clear: both;
+    position: relative;
+}
+#nav ul {
+    border:0px;
+    left: -9999px;
+    overflow: hidden;
+    position: absolute;
+    top: -9999px;
+    z-index: 2;
+
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+
+    -moz-transition: -moz-transform 0.1s ease-out;
+    -ms-transition: -ms-transform 0.1s ease-out;
+    -o-transition: -o-transform 0.1s ease-out;
+    -webkit-transition: -webkit-transform 0.1s ease-out;
+    transition: transform 0.1s ease-out;
+}
+#nav li {
+    float: left;
+    position: relative;
+}
+#nav li a {
+    color: #AAAAAA;
+    display: block;
+    float: left;
+    font-weight: normal;
+    height: 1.618em;
+    padding: 0px 20px 0;
+    position: relative;
+    text-decoration: none;
+}
+#nav li:hover > a {
+    color: #00B4FF;
+}
+#nav li:hover ul.subs {
+    left: 6px;
+    top: 1.618em;
+    width: 200px;
+
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+}
+#nav ul li {
+    background: none;
+    width: 100%;
+}
+#nav ul li a {
+    float: none;
+}
+#nav ul li:hover > a {
+    color: #00B4FF;
+}
