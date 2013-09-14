@@ -4,7 +4,7 @@
 # Top namespace
 module MetroPage
   # Current version number
-  VERSION = "0.6.0"
+  VERSION = "0.6.1"
 
   module_function
 

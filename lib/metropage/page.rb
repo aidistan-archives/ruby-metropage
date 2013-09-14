@@ -6,7 +6,7 @@ class MetroPage::Page
   # The html code to separate tables
   TAB_SEPARATOR = "<hr style=\"margin:40px 0px 40px 0px; background-color:#FFFFFF; color:#FFFFFF; height:1px; border:0;\"/>\n"
 
-  attr_accessor :name, :title, :tables, :left_bottom, :right_bottom, :nav, :no_animation
+  attr_accessor :name, :title, :tables, :left_bottom, :right_bottom, :nav, :no_animation, :no_languages
 
   # Create a page
   def initialize(
@@ -14,11 +14,12 @@ class MetroPage::Page
                   title:"", 
                   tables:[],
 
-                  left_bottom:["Created by MetroPage ver" + MetroPage::VERSION, "https://github.com/aidistan/aidi-metropage"], 
+                  left_bottom:["Created by MetroPage v" + MetroPage::VERSION, "https://github.com/aidistan/aidi-metropage"], 
                   right_bottom:"#{Time.now.year}.#{Time.now.mon}.#{Time.now.mday}", 
                   nav:nil,
 
-                  no_animation:false
+                  no_animation:false,
+                  no_languages:false
                 )
     @name = name
     @title = title
@@ -27,6 +28,7 @@ class MetroPage::Page
     @right_bottom = right_bottom
     @nav = nav
     @no_animation = no_animation
+    @no_languages = no_languages
   end
   # Push a table into the page
   def push(*args)
@@ -57,15 +59,17 @@ class MetroPage::Page
 
     rtn.sub!("<!-- MetroPage.page.left_bottom -->", "<a href='#{left_bottom[1]}'>#{MetroPage.get_text(left_bottom[0], lang)}</a>")
     rtn.sub!("<!-- MetroPage.page.right_bottom -->", MetroPage.get_text(right_bottom, lang))
-    rtn.sub!(/^\s+<!-- MetroPage.LANGUAGES -->/) do
-      /^(?<indent> +)<!-- MetroPage.LANGUAGES -->/ =~ rtn
-      [
-        '<li><a href="#">Language</a>',
-        '    <ul class="subs">',
-        MetroPage::LANGUAGES.keys.collect{|sym| "<li><a href=\"index_#{sym}.html\">#{MetroPage::LANGUAGES[sym]}</a></li>"},
-        '    </ul>',
-        '</li>',
-      ].flatten.collect! { |line| indent + line }.join("\n")
+    unless @no_languages
+      rtn.sub!(/^\s+<!-- MetroPage.LANGUAGES -->/) do
+        /^(?<indent> +)<!-- MetroPage.LANGUAGES -->/ =~ rtn
+        [
+          '<li><a href="#">Language</a>',
+          '    <ul class="subs">',
+          MetroPage::LANGUAGES.keys.collect{|sym| "<li><a href=\"index_#{sym}.html\">#{MetroPage::LANGUAGES[sym]}</a></li>"},
+          '    </ul>',
+          '</li>',
+        ].flatten.collect! { |line| indent + line }.join("\n")
+      end
     end
     if @nav
       rtn.sub!(/^\s+<!-- MetroPage.page.nav -->/) do
