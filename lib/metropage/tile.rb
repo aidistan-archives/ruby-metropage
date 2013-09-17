@@ -40,7 +40,7 @@ class MetroPage::Tile
     @icon_img_src   = icon_img_src
     @icon_img_src ||= "images/#{name}.png" if FileTest.exist?("images/#{name}.png")
     @icon_img_src ||= "images/#{name}.jpg" if FileTest.exist?("images/#{name}.jpg")
-    @icon_img_src ||= ""
+    @icon_img_src ||= "images/#{name}.png" # Default value even if not exists
     @icon_txt = icon_txt
     @icon_txt_before = icon_txt_before
     @icon_txt_after = icon_txt_after
