@@ -51,6 +51,7 @@ class MetroPage::Page
     rtn = File.open(File.expand_path("../page_template.html", __FILE__)).read
 
     rtn.sub!("<!-- MetroPage.page.title -->", MetroPage.get_text(@title, lang))
+    rtn.sub!("<!-- MetroPage.logo -->", "<!-- Created by MetroPage v" + MetroPage::VERSION + " https://github.com/aidistan/aidi-metropage -->")
     rtn.sub!("<!-- MetroPage.page.name -->", MetroPage.get_text(@name, lang))
     rtn.sub!(/^\s+<!-- MetroPage.page.tables -->/) do
       /^(?<indent> +)<!-- MetroPage.page.tables -->/ =~ rtn
