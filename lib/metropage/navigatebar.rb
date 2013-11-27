@@ -11,7 +11,7 @@ module MetroPage::NavigateBar
       if value.is_a?(String)
         "<li><a href='#{value}'>#{MetroPage.get_text(key, lang)}</a></li>\n"
       elsif value[:children]
-        "<li><a href='#{value[:href]}'>#{MetroPage.get_text(key, lang)}</a>\n" + 
+        "<li><a #{value[:href] ? "href='#{value[:href]}'" : ""}>#{MetroPage.get_text(key, lang)}</a>\n" + 
         sub_create(value[:children], lang).split("\n").collect { |line| " "*4 + line }.join("\n") + 
         "</li>\n"
       else
@@ -26,7 +26,7 @@ module MetroPage::NavigateBar
       if value.is_a?(String)
         "    <li><a href='#{value}'>#{MetroPage.get_text(key, lang)}</a></li>\n"
       elsif value[:children]
-        "    <li><a href='#{value[:href]}'>#{MetroPage.get_text(key, lang)}</a>\n" + 
+        "    <li><a #{value[:href] ? "href='#{value[:href]}'" : ""}>#{MetroPage.get_text(key, lang)}</a>\n" + 
         sub_create(value[:children]).split("\n").collect { |line| " "*8 + line }.join("\n") + 
         "    </li>\n"
       else

@@ -19,7 +19,7 @@ class MetroPage::Page
                   nav:nil,
 
                   no_animation:false,
-                  no_languages:false
+                  no_languages:false # TODO: Automatically decide it
                 )
     @name = name
     @title = title
@@ -64,7 +64,7 @@ class MetroPage::Page
       rtn.sub!(/^\s+<!-- MetroPage.LANGUAGES -->/) do
         /^(?<indent> +)<!-- MetroPage.LANGUAGES -->/ =~ rtn
         [
-          '<li><a href="#">Language</a>',
+          '<li><a>Language</a>',
           '    <ul class="subs">',
           MetroPage::LANGUAGES.keys.collect{|sym| "<li><a href=\"index_#{sym}.html\">#{MetroPage::LANGUAGES[sym]}</a></li>"},
           '    </ul>',
